@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-$+mh78n(a&2q8iydxpi@y(63z%eq2dq%*@x9f3xi*5k3xjxx7j
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://shop-invoice.herokuapp.com/']
+ALLOWED_HOSTS = ['https://shop-invoice.herokuapp.com', "*"]
 
 
 # Application definition
@@ -85,7 +85,7 @@ DATABASES = {
 }
 
 
-X_FRAME_OPTIONS = ['https://shop-invoice.herokuapp.com/', 'Localhost:8000']
+X_FRAME_OPTIONS = 'https://shop-invoice.herokuapp.com'
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
