@@ -1,0 +1,157 @@
+{% load static %}
+<html>
+    <head>
+        
+    </head>
+  <style>
+    @page{
+        margin: 0px;
+    }
+
+    body{
+        margin: 0px;
+    }
+    th{
+        font-size: 15px;
+        background-color: lightsteelblue;
+        border: 0px solid white;
+        border-top: black;
+        border-bottom: black;
+    }
+    td {
+        text-align: center;
+        font-size: 14px;
+    }
+    .title-header{
+        display: inline;
+        text-align: center;
+        font-size: 25px;
+    }
+    .title-header1{
+        text-align: center;
+        display: inline;
+        width: 50px;
+        border: 2px solid black;
+        margin: 25px;
+        font-size: 25px;
+        font-style: normal;
+
+    }
+    .border-header{
+        padding: 10px;
+        border: 1px solid white;
+        border-top: black;
+        border-bottom: black;
+    }
+    .border-data1{
+        background-color: lightgray;
+        padding: 5px;
+    }
+    .border-data2{
+        padding: 5px;
+    }
+    .bill_number{
+        text-align: left;
+        margin: 10px,0px,20px,0px;
+    }
+    .date{
+        text-align: right;
+    }
+    .subtotal{
+        position: absolute;
+        width: 100%;
+        font-size: 15px;
+        text-align: right;
+        margin-right: 50px;
+    }
+
+    
+  </style>
+  <body>
+    
+    <div style="width: 80%; margin:0px;">
+        <img src="{% static 'images/hlooo.png' %}" height="500px">
+    </div>
+    
+
+    <br>
+    <div class="date" style="margin-top: 10px;">
+        <p style="display: 10%;  font-size: 13px ">Created At : {{date}}</p>
+    </div>
+    <div class="bill_number" style="margin-left: 5px;">
+        <p style="display: 10%;  font-size: 15px; font-weight: 500;  ">Bill No. : {{bill_number}}</p>
+    </div>
+    <div class="title-header">
+        To : 
+    </div>
+    <div class="title-header1">
+        <u>Dhruv</u>
+    </div>
+  <div >
+    <table >
+    <thead>
+    <tr class="border-header">
+    <th >Sr.No</th>
+    <th>Product Name</th>
+    <th >Price (Rs)</th>
+    <th >Qty</th>
+    <th >Amount (Rs)</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for data in product_data %}
+    {% if forloop.counter|divisibleby:"2" == 0 %}
+    <tr class="border-data1">
+    <td >{{forloop.counter}}</td>
+    <td >{{data.name}}</td>
+    <td class="pprice" >{{data.price}}</td>
+    <td class="pquantity" >{{data.quantity}}</td>
+     <td class="total">{{data.total_product_price}}</td>
+    </tr>
+    {% else %}
+    <tr  class="border-data2">
+        <td >{{forloop.counter}}</td>
+        <td >{{data.name}}</td>
+        <td class="pprice" >{{data.price}}</td>
+        <td class="pquantity" >{{data.quantity}}</td>
+        <td class="total">{{data.total_product_price}}</td>
+    </tr>
+    {% endif %}
+    {% endfor %}
+
+   
+    
+    </tbody>
+    </table>
+    </div>
+    <hr>
+    <div class="subtotal" >
+        <b>Total Rs. {{bill_amount}}</b>
+    </div>
+    <div style="text-align: right; font-size: 15px;  margin-right: 50px;" >
+        <b>({{amount_word}} only)</b>
+    </div>
+    <br>
+    <br>
+    <div class="sign" style="margin-left: 35px;">
+        <img src="{% static 'images/sign.png' %}" width="125px" height="100px">
+    </div>
+    <div style="margin-left: 50px;">
+        <p style="font-size: 15px;">(Owner Sign)</p>
+    </div>
+    
+    
+   
+  
+  </body> 
+
+  <script src="https://code.jquery.com/jquery-3.6.1.slim.js" integrity="sha256-tXm+sa1uzsbFnbXt8GJqsgi2Tw+m4BLGDof6eUPjbtk=" crossorigin="anonymous"></script>
+
+  
+<script>
+
+   
+
+</script>
+
+  </html>

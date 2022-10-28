@@ -1,0 +1,115 @@
+{% extends "dashboard.html" %}
+
+{% block content %}
+
+
+
+
+<br>
+<h2 class="text-center">Create Bill</h2>
+<br>
+<br>
+
+
+<form method="post" action="{% url 'create_bill' %}">
+    {% csrf_token %}
+
+    <input type="hidden" value="" id="total_data" name="loop">
+
+    <!-- <div class="text-center data-product" id="total_val1">
+        <label class="labeltag">Enter Product Name</label>
+        <input type="text" name="pname1"><br>
+        <label class="labeltag">Enter Product Quantity</label>
+        <input type="text" name="pquantity1"><br>
+        <label class="labeltag">Enter Product Price</label>
+        <input type="text" name="pprice1"><br><br> 
+    </div> -->
+
+    <div class="text-center append-data">
+
+      
+    </div>  
+
+    <div class="text-center " >
+       <button type="submit"  class="btn btn-success">Create Bill</button>
+       <a  class="btn btn-info" id="add-product">Add Another</a>
+    </div>  
+
+  </form>
+
+   
+
+
+<script>
+
+var total_data = 1
+
+
+$(document).on("click",'.removeproduct',function(){
+    var value = $(this).attr("data-id")
+    $("#total_val"+value).remove()
+
+
+    total_data --
+    rearrange()
+    PassValue()
+})
+
+function rearrange(){
+    $(".data-product").each(function(total_data, elememt){
+    $(this).attr('id', `total_val${total_data+1}`)  })
+
+
+    $(".productname").each(function(total_data, elememt){
+    $(this).attr('id', `productn${total_data+1}`)
+    $(this).attr('name', `pname${total_data+1}`)
+    })
+
+    $(".productquantity").each(function(total_data, elememt){
+    $(this).attr('id', `productq${total_data+1}`)
+    $(this).attr('name', `pquantity${total_data+1}`)  })
+    
+    $(".productprice").each(function(total_data, elememt){
+    $(this).attr('name', `pprice${total_data+1}`) 
+    $(this).attr('id', `productpr${total_data+1}`)  })
+
+    $(".removeproduct").each(function(total_data, elememt){
+    $(this).attr('data-id', `${total_data+1}`) 
+
+
+
+
+})
+    
+
+
+}
+
+$(document).ready(function() {
+
+    $("#add-product").click(function(){
+
+       $(".append-data").append(` <div class="data-product" id="total_val${total_data}"> 
+        <label class="labeltag">Enter Product Name</label>
+        <input type="text" class="productname" id="productn${total_data}" name="pname${total_data}"><br>
+        <label class="labeltag">Enter Product Quantity</label>
+        <input type="text" class="productquantity" id="productq${total_data}" name="pquantity${total_data}"><br>
+        <label class="labeltag">Enter Product Price</label>
+        <input type="text" class="productprice" id="productpr${total_data}" name="pprice${total_data}"><br>
+       <div class="removeproduct btn btn-danger" data-id="${total_data}">Remove</div>
+        <br><br></div>`)
+       total_data ++ 
+       PassValue()
+
+    }
+    )
+    
+})
+
+
+function PassValue(){
+    $("#total_data").val(total_data-1)
+}
+    
+
+</script>

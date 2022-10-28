@@ -1,0 +1,17 @@
+<html>
+  <h1>Hey there</h1>
+  <style>
+    .pdffile{
+      text-align: center;
+      width: 100%;
+    }
+  </style>
+  <br>
+  <br>
+  <div class="pdffile">
+  <iframe src="{% url 'pdf-report' object.id  %}" type="application/pdf" width="65%" height="80%"></iframe>
+  </div>
+  <script>
+    
+  </script>
+</html>
