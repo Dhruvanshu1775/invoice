@@ -8,8 +8,6 @@ from django.contrib.auth import  login as auth_login
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from .models import *
 from django.urls import reverse, reverse_lazy
-import pywhatkit
-from selenium import webdriver
 
 
 
